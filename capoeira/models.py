@@ -10,7 +10,7 @@ class Endereco(models.Model):
 
 class Grupo(models.Model):
     sequencia_corda = models.CharField(max_length=100)
-    nome = models.CharField(max_length=100)
+    nome = models.CharField(max_length=100, primary_key=True)
     endereco = models.ForeignKey(Endereco)
 
 class Pessoa(models.Model):
@@ -24,6 +24,7 @@ class Pessoa(models.Model):
 	cor_corda = models.CharField(max_length=50)
 	grupo = models.ForeignKey(Grupo)
 
+
 class Aluno(Pessoa):
         pai = models.CharField(max_length=100)
         mae = models.CharField(max_length=100)
@@ -32,7 +33,7 @@ class Professor(Pessoa):
     registro = models.CharField(max_length=100)
 
 class Turma(models.Model):
-    nome = models.CharField(max_length=100)
+    nome = models.CharField(max_length=100, primary_key=True)
     turno = models.CharField(max_length=100)
     horario = models.DateField()
     dia_semana = models.CharField(max_length=100)
@@ -47,4 +48,4 @@ class Exame(models.Model):
     turma = models.ForeignKey(Turma)
 
 class Corda(models.Model):
-	cor = models.CharField(max_length=100)
+	cor = models.CharField(max_length=100, primary_key=True)
